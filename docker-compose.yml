@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  pg:
+    image: postgres:14-alpine
+    ports:
+      - "5432:5432"
+    command: ["postgres", "-c", "config_file=/pgc/postgresql.conf", "-c","hba_file=/pgc/pg_hba.conf"]
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - ./postgres:/pgc
